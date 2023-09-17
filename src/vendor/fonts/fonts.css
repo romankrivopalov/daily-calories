@@ -1,7 +1,15 @@
 @font-face {
-  /* font-family: 'Paytone One';
-  src: url('./PaytoneOne-Regular.woff'),
-       url('./PaytoneOne-Regular.woff2');
+  font-family: 'Raleway';
+  src: url('./Raleway-Regular.woff'),
+       url('./Raleway-Regular.woff2');
   font-style: normal;
-  font-weight: 400; */
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('./Raleway-Bold.woff'),
+       url('./Raleway-Bold.woff2');
+  font-style: normal;
+  font-weight: 600;
 }

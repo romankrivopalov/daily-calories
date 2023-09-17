@@ -1,0 +1,18 @@
+.navbar__link {
+  display: block;
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  background-image: url('../../../images/icon-github.svg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar__link {
+    justify-content: flex-end;
+    width: 32px;
+    height: 32px;
+  }
+}

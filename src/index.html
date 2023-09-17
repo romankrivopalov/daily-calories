@@ -6,7 +6,23 @@
   <meta name="author" content="Roman Krivopalov">
   <title>Daily calories | Отслеживание потребляемых калорий</title>
 </head>
-<body>
-
+<body class="page">
+  <section class="navbar">
+    <ul class="navbar__list">
+      <li class="navbar__item" data-type="main" aria-label="открыть главную страницу">
+        <span class="navbar__item-text">Главная</span>
+        <img class="navbar__icon" src="<%=require('./images/icon-navbar-main.svg')%>" alt="">
+      </li>
+      <li class="navbar__item" data-type="products" aria-label="открыть страницу продуктов">
+        <span class="navbar__item-text">Продукты</span>
+        <img class="navbar__icon" src="<%=require('./images/icon-navbar-list.svg')%>" alt="">
+      </li>
+      <li class="navbar__item" data-type="setting" aria-label="открыть страницу настроек">
+        <span class="navbar__item-text">Настройки</span>
+        <img class="navbar__icon" src="<%=require('./images/icon-navbar-setting.svg')%>" alt="">
+      </li>
+    </ul>
+    <a class="navbar__link" href="https://github.com/romankrivopalov/daily-calories" target="_blank"></a>
+  </section>
 </body>
 </html>
