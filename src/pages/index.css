@@ -6,6 +6,24 @@
 
 @import url('../blocks/container/container.css');
 
+@import url('../blocks/logo/logo.css');
+
+@import url('../blocks/button/button.css');
+@import url('../blocks/button/_size/button_size_m.css');
+@import url('../blocks/button/_size/button_size_l.css');
+@import url('../blocks/button/_type/button_type_active.css');
+
+@import url('../blocks/input/input.css');
+
+@import url('../blocks/start/start.css');
+@import url('../blocks/start/_hide/start_hide.css');
+@import url('../blocks/start/__form/start__form.css');
+@import url('../blocks/start/__title/start__title.css');
+@import url('../blocks/start/__subtitle/start__subtitle.css');
+@import url('../blocks/start/__wrapper/start__wrapper.css');
+@import url('../blocks/start/__row/start__row.css');
+@import url('../blocks/start/__label/start__label.css');
+
 @import url('../blocks/navbar/navbar.css');
 @import url('../blocks/navbar/__list/navbar__list.css');
 @import url('../blocks/navbar/__item/navbar__item.css');

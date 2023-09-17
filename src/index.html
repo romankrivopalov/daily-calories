@@ -7,6 +7,94 @@
   <title>Daily calories | Отслеживание потребляемых калорий</title>
 </head>
 <body class="page">
+  <section class="start" id="start">
+    <form class="start__form" novalidate>
+      <div class="start__wrapper">
+        <div class="start__row">
+          <img class="logo" src="<%=require('./images/icon-logo.svg')%>" alt="Логотип сервиса. Авокадо. ">
+          <span class="start__title">Daily calories</span>
+        </div>
+        <span class="start__subtitle">Настрой свой профиль</span>
+      </div>
+
+      <div class="start__row">
+        <button
+          class="button button_size_m"
+          type="button"
+          data-type="gender"
+          data-gender="male">
+          Мужчина
+        </button>
+        <button
+          class="button button_size_m"
+          type="button"
+          data-type="gender"
+          data-gender="female">
+          Женщина
+        </buttonclass=>
+      </div>
+
+      <div class="start__row">
+        <input
+          class="input"
+          type="number"
+          min="6"
+          max="110"
+          placeholder="Возраст"
+          data-type="start"
+          data-user="age"
+          require>
+        <input
+          class="input"
+          type="number"
+          min="50"
+          max="200"
+          placeholder="Рост"
+          data-type="start"
+          data-user="height"
+          require>
+        <input
+          class="input"
+          type="number"
+          min="10"
+          max="500"
+          placeholder="Вес"
+          data-type="start"
+          data-user="weight"
+          require>
+      </div>
+
+      <div class="start__wrapper">
+        <span class="start__label">Ваш уровень активности</span>
+        <div class="start__row">
+          <button
+            class="button button_size_m"
+            type="button"
+            data-type="activity"
+            data-activity="low">
+            низкий
+          </button>
+          <button
+            class="button button_size_m"
+            type="button"
+            data-type="activity"
+            data-activity="middle">
+            средний
+          </buttonclass=>
+          <button
+            class="button button_size_m"
+            type="submit"
+            data-type="activity"
+            data-activity="high">
+            высокий
+          </button>
+        </div>
+      </div>
+
+      <button class="button button_size_l" type="submit" id="start-btn-submit" disabled>Начать</button>
+    </div>
+  </section>
+
   <section class="navbar">
     <ul class="navbar__list">
       <li class="navbar__item" data-type="main" aria-label="открыть главную страницу">

@@ -1,0 +1,10 @@
+.start__form {
+  display: block;
+  margin: 0;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 360px;
+}
