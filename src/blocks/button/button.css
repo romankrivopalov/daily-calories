@@ -1,7 +1,7 @@
 .button {
   margin: 0;
   padding: 8px 16px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 20px;
   font-weight: 600;
   color: var(--color-system-white);
@@ -24,4 +24,11 @@
 
 .button:disabled:hover {
   cursor: auto;
+}
+
+@media screen and (min-width: 1024px) {
+  .button {
+    font-size: 18px;
+    line-height: 24px;
+  }
 }
