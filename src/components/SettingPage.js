@@ -49,6 +49,33 @@ class SettingPage {
     }
   }
 
+  // переключение активной кнопки выбора типа активности
+  _toggleActiveActivityBtn = (element) => {
+    this._allActivityBtns.forEach(item => {
+      item.classList.remove('button_type_active');
+    });
+
+    element.classList.add('button_type_active');
+    this._newUserData.activity = element.getAttribute('data-activity');
+
+    // проверка на отличие переданного массива и измененного
+    this._checkNewUserData();
+  }
+
+  // проверка валидности поля инпута и установка значения
+  _checkValidityInput = (input) => {
+    console.log(input)
+    if (input.validity.valid) {
+      // обращение к ключу объекта по имени передаваемого атрибута
+      this._newUserData[input.getAttribute('data-user')] = +input.value;
+
+      // проверка на отличие переданного массива и измененного
+      this._checkNewUserData();
+    } else {
+      this._checkNewUserData();
+    }
+  }
+
   // переключение активной кнопки выбора пола
   _toggleActiveGenderBtn = (element) => {
     this._allGenderBtns.forEach(btn => {
@@ -56,7 +83,6 @@ class SettingPage {
     });
 
     element.classList.add('button_type_active');
-
     this._newUserData.gender = element.getAttribute('data-gender');
 
     // проверка на отличие переданного массива и измененного
@@ -70,6 +96,12 @@ class SettingPage {
       })
     });
 
+    this._allInputs.forEach(inputElement => {
+      inputElement.addEventListener('input', () => {
+        this._checkValidityInput(inputElement);
+      });
+    });
+
     this._allActivityBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         this._toggleActiveActivityBtn(btn);
@@ -81,6 +113,9 @@ class SettingPage {
 
       // при срабатывании submit, отправляем новые данные
       this._handleSetUserData(this._newUserData);
+      this._initialUserData = structuredClone(this._newUserData);
+
+      this._checkNewUserData();
 
       // установка новых данных в localStorage
       localStorage.setItem('data', JSON.stringify(this._newUserData));
