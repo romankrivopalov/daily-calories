@@ -9,7 +9,7 @@ import SettingPage from '../components/SettingPage';
 
 const user = new User();
 const start = new Start(all.startSetting, user.setUserData);
-const settingPage = new SettingPage(all.settingPage, user.getUserData);
+const settingPage = new SettingPage(all.settingPage, user.getUserData, user.setUserData);
 const navbar = new Navbar(all.navbarSetting, settingPage.openSettingPage);
 
 start.setData();

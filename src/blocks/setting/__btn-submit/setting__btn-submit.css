@@ -1,6 +1,11 @@
 .setting__btn-submit {
   margin-top: 24px;
   width: 100%;
+  opacity: 1;
+}
+
+.setting__btn-submit:disabled {
+  opacity: .7;
 }
 
 @media screen and (min-width: 400px) {
