@@ -7,7 +7,7 @@
   <title>Daily calories | Отслеживание потребляемых калорий</title>
 </head>
 <body class="page">
-  <section class="start" id="start">
+  <!-- <section class="start" id="start">
     <form class="start__form" novalidate>
       <div class="start__wrapper">
         <div class="start__row">
@@ -31,7 +31,7 @@
           data-type="gender"
           data-gender="female">
           Женщина
-        </buttonclass=>
+        </button>
       </div>
 
       <div class="start__row">
@@ -80,7 +80,7 @@
             data-type="activity"
             data-activity="middle">
             средний
-          </buttonclass=>
+          </button>
           <button
             class="button button_size_m"
             type="submit"
@@ -93,7 +93,7 @@
 
       <button class="button button_size_l" type="submit" id="start-btn-submit" disabled>Начать</button>
     </div>
-  </section>
+  </section> -->
 
   <section class="navbar">
     <ul class="navbar__list">
@@ -112,5 +112,99 @@
     </ul>
     <a class="navbar__link" href="https://github.com/romankrivopalov/daily-calories" target="_blank"></a>
   </section>
+
+  <div class="container">
+    <div class="setting">
+      <h2 class="section-title">Настройки</h2>
+
+      <form class="setting__form">
+        <div class="setting__wrapper">
+          <button
+            class="button button_size_m"
+            type="button"
+            data-type="gender"
+            data-gender="male">
+            Мужчина
+          </button>
+          <button
+            class="button button_size_m"
+            type="button"
+            data-type="gender"
+            data-gender="female">
+            Женщина
+          </button>
+        </div>
+
+        <div class="setting__wrapper">
+          <input
+          class="input input_type_short"
+          type="number"
+          min="6"
+          max="110"
+          placeholder="Возраст"
+          data-type="start"
+          data-user="age"
+          require>
+          <span class="setting__label">Возраст</span>
+        </div>
+
+        <div class="setting__wrapper">
+          <input
+          class="input input_type_short"
+          type="number"
+          min="6"
+          max="110"
+          placeholder="Возраст"
+          data-type="start"
+          data-user="age"
+          require>
+          <span class="setting__label">Рост</span>
+        </div>
+
+        <div class="setting__wrapper">
+          <input
+          class="input input_type_short"
+          type="number"
+          min="6"
+          max="110"
+          placeholder="Возраст"
+          data-type="start"
+          data-user="age"
+          require>
+          <span class="setting__label">Вес</span>
+        </div>
+
+        <div class="setting__wrapper">
+          <div class="setting__activity">
+            <button
+              class="button button_size_m"
+              type="button"
+              data-type="activity"
+              data-activity="low">
+              низкий
+            </button>
+            <button
+              class="button button_size_m"
+              type="button"
+              data-type="activity"
+              data-activity="middle">
+              средний
+            </button>
+            <button
+              class="button button_size_m"
+              type="submit"
+              data-type="activity"
+              data-activity="high">
+              высокий
+            </button>
+          </div>
+
+          <span class="setting__label">Уровень активности</span>
+        </div>
+
+        <button class="button button_size_l setting__btn-submit">Изменить</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

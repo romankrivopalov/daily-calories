@@ -1,0 +1,5 @@
+.setting__activity {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

@@ -1,0 +1,10 @@
+.setting__btn-submit {
+  margin-top: 24px;
+  width: 100%;
+}
+
+@media screen and (min-width: 400px) {
+  .setting__btn-submit {
+    width: 164px;
+  }
+}
