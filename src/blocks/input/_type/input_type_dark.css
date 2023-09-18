@@ -1,0 +1,7 @@
+.input_type_dark {
+  color: var(--color-ssystem-black);
+}
+
+.input_type_dark::placeholder {
+  color: var(--color-system-black);
+}

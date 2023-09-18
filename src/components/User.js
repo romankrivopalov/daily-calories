@@ -3,8 +3,12 @@ class User {
     this._setting = setting;
   }
 
+  getUserData = () => {
+    return this._userData;
+  }
+
   setUserData = (data) => {
-    console.log(data)
+    this._userData = data
   }
 }
 

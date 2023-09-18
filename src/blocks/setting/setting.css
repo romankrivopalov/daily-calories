@@ -1,6 +1,6 @@
 .setting {
   margin: 40px 0 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 24px;
 }

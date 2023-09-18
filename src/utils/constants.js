@@ -25,3 +25,7 @@ export const navbarSetting = {
   itemProductsSelector: 'navbar__item[data-type="products"]',
   itemSettingSelector: 'navbar__item[data-type="setting"]',
 }
+
+export const settingPage = {
+
+}
