@@ -12,5 +12,5 @@ const start = new Start(all.startSetting, user.setUserData);
 const settingPage = new SettingPage(all.settingPage, user.getUserData);
 const navbar = new Navbar(all.navbarSetting, settingPage.openSettingPage);
 
-start.setEventListeners();
+start.setData();
 navbar.setEventListeners();

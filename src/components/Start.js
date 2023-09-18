@@ -27,6 +27,8 @@ class Start {
 
       if (this._checkAvailableAllData()) {
         this._btnSubmit.disabled = false;
+
+        localStorage.setItem('data', JSON.stringify(this._userData));
       } else {
         this._btnSubmit.disabled = true;
       }
@@ -68,7 +70,7 @@ class Start {
     );
   }
 
-  setEventListeners = () => {
+  _setEventListeners = () => {
     this._allGenderBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         this._toggleActiveGenderBtn(btn);
@@ -97,6 +99,18 @@ class Start {
         this._closeStartWindow();
       }
     })
+  }
+
+  setData = () => {
+    const userData = JSON.parse(localStorage.getItem('data'));
+
+    if (userData) {
+      this._userData = userData;
+      this._handleSetUserData(this._userData);
+      this._closeStartWindow();
+    } else {
+      this._setEventListeners();
+    }
   }
 }
 
