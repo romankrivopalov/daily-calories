@@ -35,6 +35,9 @@
 
 @import url('../blocks/section-title/section-title.css');
 
+@import url('../blocks/products/products.css');
+@import url('../blocks/products/_show/products_show.css');
+
 @import url('../blocks/setting/setting.css');
 @import url('../blocks/setting/_show/setting_show.css');
 @import url('../blocks/setting/__wrapper/setting__wrapper.css');

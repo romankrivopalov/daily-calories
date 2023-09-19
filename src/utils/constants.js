@@ -1,4 +1,4 @@
-export const startSetting = {
+export const startPageSetting = {
   pageSelector: '#start',
   pageShowClass: 'start_show',
   formSelector: '.start__form',
@@ -24,6 +24,11 @@ export const navbarSetting = {
   itemMainSelector: 'navbar__item[data-type="main"]',
   itemProductsSelector: 'navbar__item[data-type="products"]',
   itemSettingSelector: 'navbar__item[data-type="setting"]',
+}
+
+export const productPageSetting = {
+  pageSelector: '#products',
+  pageShowClass: 'products_show',
 }
 
 export const settingPage = {
