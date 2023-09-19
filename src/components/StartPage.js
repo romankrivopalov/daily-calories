@@ -4,7 +4,7 @@ class StartPage extends Form {
   constructor(setting, handleSetUserData) {
     super(setting)
     this._handleSetUserData = handleSetUserData;
-    this._userData = this._setting.userData;
+    this._userData = this.setting.userData;
   }
 
   // проверка наличия значений у всех полей объекта
@@ -32,8 +32,8 @@ class StartPage extends Form {
     super.toggleGenderBtn(element);
 
     this._setUserData(
-      element.getAttribute(this._setting.nameAttributeDataType),
-      element.getAttribute(this._setting.nameAttributeDataGender)
+      element.getAttribute(this.setting.nameAttributeDataType),
+      element.getAttribute(this.setting.nameAttributeDataGender)
     );
   }
 
@@ -42,17 +42,17 @@ class StartPage extends Form {
     super.toggleActivityBtn(element)
 
     this._setUserData(
-      element.getAttribute(this._setting.nameAttributeDataType),
-      element.getAttribute(this._setting.nameAttributeDataActivity)
+      element.getAttribute(this.setting.nameAttributeDataType),
+      element.getAttribute(this.setting.nameAttributeDataActivity)
     );
   }
 
   // проверка валидности поля инпута и установка значения
   _checkValidityInput = (input) => {
     if (input.validity.valid) {
-      this._setUserData(input.getAttribute(this._setting.nameAttributeDataUser), +input.value);
+      this._setUserData(input.getAttribute(this.setting.nameAttributeDataUser), +input.value);
     } else {
-      this._setUserData(input.getAttribute(this._setting.nameAttributeDataUser), null);
+      this._setUserData(input.getAttribute(this.setting.nameAttributeDataUser), null);
     }
   }
 

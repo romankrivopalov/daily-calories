@@ -1,12 +1,8 @@
-class SettingPage {
+import Form from './Form.js';
+
+class SettingPage extends Form {
   constructor(setting, handleGetUserData, handleSetUserData) {
-    this._setting = setting;
-    this._settingWindow = document.querySelector('#setting');
-    this._form = this._settingWindow.querySelector('#form-setting');
-    this._allGenderBtns = this._form.querySelectorAll('.button[data-type="gender"]');
-    this._allInputs = this._form.querySelectorAll('input[data-type="setting"]');
-    this._allActivityBtns = this._form.querySelectorAll('.button[data-type="activity"]');
-    this._btnSubmit = this._form.querySelector('#setting-btn-submit');
+    super(setting)
     this._handleGetUserData = handleGetUserData;
     this._handleSetUserData = handleSetUserData;
     this._initialUserData = null;
@@ -22,21 +18,23 @@ class SettingPage {
     const { gender, age, height, weight, activity } = data;
 
     this._allGenderBtns.forEach(btn => {
-      if (btn.getAttribute('data-gender') === gender) {
-        btn.classList.add('button_type_active');
+      if (btn.getAttribute(this.setting.nameAttributeDataGender) === gender) {
+        btn.classList.add(this.setting.btnInactiveClass);
       } else {
-        btn.classList.remove('button_type_active');
+        btn.classList.remove(this.setting.btnInactiveClass);
       }
     });
 
     this._allInputs.forEach(input => {
-      if (input.getAttribute('data-user') === 'age') input.value = +age;
-      if (input.getAttribute('data-user') === 'height') input.value = +height;
-      if (input.getAttribute('data-user') === 'weight') input.value = +weight;
+      if (input.getAttribute(this.setting.nameAttributeDataUser) === 'age') input.value = +age;
+      if (input.getAttribute(this.setting.nameAttributeDataUser) === 'height') input.value = +height;
+      if (input.getAttribute(this.setting.nameAttributeDataUser) === 'weight') input.value = +weight;
     })
 
     this._allActivityBtns.forEach(btn => {
-      if (btn.getAttribute('data-activity') === activity) btn.classList.add('button_type_active');
+      if (btn.getAttribute(this.setting.nameAttributeDataActivity) === activity) {
+        btn.classList.add(this.setting.btnInactiveClass);
+      }
     })
   }
 
@@ -49,15 +47,20 @@ class SettingPage {
     }
   }
 
-  // переключение активной кнопки выбора типа активности
-  _toggleActiveActivityBtn = (element) => {
-    this._allActivityBtns.forEach(item => {
-      item.classList.remove('button_type_active');
-    });
+  // переопределение метода переключения активной кнопки выбора активности
+  toggleActivityBtn(element) {
+    super.toggleActivityBtn(element);
 
-    element.classList.add('button_type_active');
-    this._newUserData.activity = element.getAttribute('data-activity');
+    this._newUserData.activity = element.getAttribute(this.setting.nameAttributeDataActivity);
+    // проверка на отличие переданного массива и измененного
+    this._checkNewUserData();
+  }
 
+  // переопределение метода переключения активной кнопки выбора пола
+  toggleGenderBtn(element) {
+    super.toggleGenderBtn(element)
+
+    this._newUserData.gender = element.getAttribute(this.setting.nameAttributeDataUser);
     // проверка на отличие переданного массива и измененного
     this._checkNewUserData();
   }
@@ -66,7 +69,7 @@ class SettingPage {
   _checkValidityInput = (input) => {
     if (input.validity.valid) {
       // обращение к ключу объекта по имени передаваемого атрибута
-      this._newUserData[input.getAttribute('data-user')] = +input.value;
+      this._newUserData[input.getAttribute(this.setting.nameAttributeDataGender)] = +input.value;
 
       // проверка на отличие переданного массива и измененного
       this._checkNewUserData();
@@ -75,24 +78,11 @@ class SettingPage {
     }
   }
 
-  // переключение активной кнопки выбора пола
-  _toggleActiveGenderBtn = (element) => {
-    this._allGenderBtns.forEach(btn => {
-      btn.classList.remove('button_type_active');
-    });
-
-    element.classList.add('button_type_active');
-    this._newUserData.gender = element.getAttribute('data-gender');
-
-    // проверка на отличие переданного массива и измененного
-    this._checkNewUserData();
-  }
-
   _setEventListeners = () => {
     this._allGenderBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        this._toggleActiveGenderBtn(btn);
-      })
+        this.toggleGenderBtn(btn);
+      });
     });
 
     this._allInputs.forEach(inputElement => {
@@ -103,7 +93,7 @@ class SettingPage {
 
     this._allActivityBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        this._toggleActiveActivityBtn(btn);
+        this.toggleActivityBtn(btn);
       });
     });
 
@@ -127,7 +117,7 @@ class SettingPage {
 
     this._setUserData(this._handleGetUserData());
 
-    this._settingWindow.classList.add('setting_show');
+    this.openPage();
   }
 }
 

@@ -27,5 +27,16 @@ export const navbarSetting = {
 }
 
 export const settingPage = {
-
+  pageSelector: '#setting',
+  pageShowClass: 'setting_show',
+  formSelector: '#form-setting',
+  btnGenderSelector: '.button[data-type="gender"]',
+  btnActivitySelector: '.button[data-type="activity"]',
+  inputSelector: 'input[data-type="setting"]',
+  btnSubmitSelector: '#setting-btn-submit',
+  btnInactiveClass: 'button_type_active',
+  nameAttributeDataType: 'data-type',
+  nameAttributeDataUser: 'data-user',
+  nameAttributeDataActivity: 'data-activity',
+  nameAttributeDataGender: 'data-gender',
 }
