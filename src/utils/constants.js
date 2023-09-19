@@ -1,9 +1,9 @@
 export const startSetting = {
+  pageSelector: '#start',
+  pageShowClass: 'start_show',
+  formSelector: '.start__form',
   btnGenderSelector: '.button[data-type="gender"]',
   btnActivitySelector: '.button[data-type="activity"]',
-  startWindowSelector: '#start',
-  startWindowHideClass: 'start_hide',
-  formSelector: '.start__form',
   inputSelector: '.input[data-type="start"]',
   btnSubmitSelector: '#start-btn-submit',
   btnInactiveClass: 'button_type_active',

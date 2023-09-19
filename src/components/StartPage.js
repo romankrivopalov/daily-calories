@@ -1,18 +1,10 @@
-class Start {
-  constructor(setting, handleSetUserData) {
-    this._setting = setting;
-    this._userData = this._setting.userData;
-    this._startWindow = document.querySelector(this._setting.startWindowSelector);
-    this._form = this._startWindow.querySelector(this._setting.formSelector);
-    this._allGenderBtns = this._form.querySelectorAll(this._setting.btnGenderSelector);
-    this._allActivityBtns = this._form.querySelectorAll(this._setting.btnActivitySelector);
-    this._allInputs = this._form.querySelectorAll(this._setting.inputSelector);
-    this._btnSubmit = this._form.querySelector(this._setting.btnSubmitSelector);
-    this._handleSetUserData = handleSetUserData;
-  }
+import Form from './Form.js';
 
-  _closeStartWindow = () => {
-    this._startWindow.classList.add(this._setting.startWindowHideClass);
+class StartPage extends Form {
+  constructor(setting, handleSetUserData) {
+    super(setting)
+    this._handleSetUserData = handleSetUserData;
+    this._userData = this._setting.userData;
   }
 
   // проверка наличия значений у всех полей объекта
@@ -35,13 +27,20 @@ class Start {
     }
   }
 
-  // переключение активной кнопки выбора типа активности
-  _toggleActiveActivityBtn = (element) => {
-    this._allActivityBtns.forEach(item => {
-      item.classList.remove(this._setting.btnInactiveClass);
-    });
+  // переопределение метода переключения активной кнопки выбора пола
+  toggleGenderBtn(element) {
+    super.toggleGenderBtn(element);
 
-    element.classList.add(this._setting.btnInactiveClass);
+    this._setUserData(
+      element.getAttribute(this._setting.nameAttributeDataType),
+      element.getAttribute(this._setting.nameAttributeDataGender)
+    );
+  }
+
+  // переопределение метода переключения активной кнопки выбора активности
+  toggleActivityBtn(element) {
+    super.toggleActivityBtn(element)
+
     this._setUserData(
       element.getAttribute(this._setting.nameAttributeDataType),
       element.getAttribute(this._setting.nameAttributeDataActivity)
@@ -57,23 +56,10 @@ class Start {
     }
   }
 
-  // переключение активной кнопки выбора пола
-  _toggleActiveGenderBtn = (element) => {
-    this._allGenderBtns.forEach(item => {
-      item.classList.remove(this._setting.btnInactiveClass);
-    });
-
-    element.classList.add(this._setting.btnInactiveClass);
-    this._setUserData(
-      element.getAttribute(this._setting.nameAttributeDataType),
-      element.getAttribute(this._setting.nameAttributeDataGender)
-    );
-  }
-
-  _setEventListeners = () => {
+  setEventListeners = () => {
     this._allGenderBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        this._toggleActiveGenderBtn(btn);
+        this.toggleGenderBtn(btn);
       });
     });
 
@@ -85,7 +71,7 @@ class Start {
 
     this._allActivityBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        this._toggleActiveActivityBtn(btn);
+        this.toggleActivityBtn(btn);
       });
     });
 
@@ -96,22 +82,24 @@ class Start {
       if (this._checkAvailableAllData()) {
         this._handleSetUserData(this._userData);
 
-        this._closeStartWindow();
+        this.closePage();
       }
     })
   }
 
+  // проверка localStorage установка начальных данных
   setData = () => {
     const userData = JSON.parse(localStorage.getItem('data'));
 
     if (userData) {
       this._userData = userData;
       this._handleSetUserData(this._userData);
-      this._closeStartWindow();
+      this.closePage();
     } else {
-      this._setEventListeners();
+      this.setEventListeners();
+      this.openPage();
     }
   }
 }
 
-export default Start
+export default StartPage

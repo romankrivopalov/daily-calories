@@ -18,7 +18,7 @@
 @import url('../blocks/input/_type/input_type_dark.css');
 
 @import url('../blocks/start/start.css');
-@import url('../blocks/start/_hide/start_hide.css');
+@import url('../blocks/start/_show/start_show.css');
 @import url('../blocks/start/__form/start__form.css');
 @import url('../blocks/start/__title/start__title.css');
 @import url('../blocks/start/__subtitle/start__subtitle.css');

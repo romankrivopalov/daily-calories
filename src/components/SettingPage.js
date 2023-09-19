@@ -64,7 +64,6 @@ class SettingPage {
 
   // проверка валидности поля инпута и установка значения
   _checkValidityInput = (input) => {
-    console.log(input)
     if (input.validity.valid) {
       // обращение к ключу объекта по имени передаваемого атрибута
       this._newUserData[input.getAttribute('data-user')] = +input.value;
