@@ -21,6 +21,9 @@ export const startPageSetting = {
 }
 
 export const navbarSetting = {
+  btnMainSelector: '.navbar__item[data-type="main"]',
+  btnProductsSelector: '.navbar__item[data-type="products"]',
+  btnSettingSelector: '.navbar__item[data-type="setting"]',
   itemMainSelector: 'navbar__item[data-type="main"]',
   itemProductsSelector: 'navbar__item[data-type="products"]',
   itemSettingSelector: 'navbar__item[data-type="setting"]',

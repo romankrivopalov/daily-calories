@@ -12,7 +12,14 @@ const user = new User();
 const startPage = new StartPage(all.startPageSetting, user.setUserData);
 const productPage = new ProductPage(all.productPageSetting);
 const settingPage = new SettingPage(all.settingPage, user.getUserData, user.setUserData);
-const navbar = new Navbar(all.navbarSetting, settingPage.openSettingPage, productPage.openPage);
+
+const allPage = [productPage, settingPage]
+
+const closeAllPage = () => {
+  allPage.forEach(page => page.closePage());
+}
+
+const navbar = new Navbar(all.navbarSetting, closeAllPage, settingPage.openSettingPage, productPage.openPage);
 
 startPage.setData();
 navbar.setEventListeners();
