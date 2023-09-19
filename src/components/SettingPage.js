@@ -60,7 +60,7 @@ class SettingPage extends Form {
   toggleGenderBtn(element) {
     super.toggleGenderBtn(element)
 
-    this._newUserData.gender = element.getAttribute(this.setting.nameAttributeDataUser);
+    this._newUserData.gender = element.getAttribute(this.setting.nameAttributeDataGender);
     // проверка на отличие переданного массива и измененного
     this._checkNewUserData();
   }
