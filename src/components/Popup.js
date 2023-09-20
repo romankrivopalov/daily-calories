@@ -47,7 +47,8 @@ class Popup extends Page {
     this._form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      this._handleSetProduct(this._productData);
+      // при срабатывании события submit отправляем в метод установки продукта, глубокую копию текущего продукта
+      this._handleSetProduct(structuredClone(this._productData));
       this.closePage();
 
       this._resetForm();

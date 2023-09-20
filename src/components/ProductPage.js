@@ -7,21 +7,47 @@ class ProductPage extends Page {
     this._btnAddProduct = this.page.querySelector(this.setting.btnAddProductSelector);
     this._btnSortName = this.page.querySelector('.products__title[data-type="sort-name"]');
     this._btnSortCalories = this.page.querySelector('.products__title[data-type="sort-calories"]');
+    this._allBtnsSort = [this._btnSortName, this._btnSortCalories];
+    this._titleReverseIconClass = 'products__title_icon-reverse';
     this._handleNewPopup = handleNewPopup;
     this._handleSetProduct = handleSetProduct;
     this._allProducts = [];
+    this._isReverseSort = false;
   }
 
   removeProduct = (data) => {
+    // методом фильтр возвращаем новый массив, за исключением переданного объекта
     this._allProducts = this._allProducts.filter(product =>
-      console.log(product.name, data.name, +product.calories, +data.calories)
-      (product.name === data.name) && (+product.calories === +data.calories)
+      product.name !== data.name && +product.calories !== +data.calories
     );
-    console.log(this._allProducts)
   }
 
-  _sortProducts = (attr) => {
-    console.log(attr)
+  _sortProducts = (attr, activeSortBrn) => {
+    const sortProducts = this._allProducts.sort((a, b) => {
+      return (b[attr] < a[attr]) - (a[attr] < b[attr])
+    })
+
+    // очистка контейнера и переменной содержащей все продукты
+    this._productContainer.innerHTML = '';
+    this._allProducts = [];
+
+    // проверка состояния переменной для определения последовательности отрисовки новых, перебранных элементов
+    if (!this._isReverseSort) {
+      // убрать активный класс у всех кнопок
+      this._allBtnsSort.forEach(btn => btn.classList.remove(this._titleReverseIconClass));
+      // добавить активный класс переданной кнопке
+      activeSortBrn.classList.add(this._titleReverseIconClass);
+
+      sortProducts.reverse().forEach(product => this.setProduct(product));
+    } else {
+      this._allBtnsSort.forEach(btn => btn.classList.remove(this._titleReverseIconClass));
+      activeSortBrn.classList.remove(this._titleReverseIconClass);
+
+      sortProducts.forEach(product => this.setProduct(product));
+    }
+
+    // изменение состояние переменной для опередения разворота массива
+    this._isReverseSort = !this._isReverseSort;
   }
 
   // добавление продукта на страницу
@@ -39,11 +65,11 @@ class ProductPage extends Page {
     });
 
     this._btnSortName.addEventListener('click', () => {
-      this._sortProducts(this._btnSortName.getAttribute('data-sort'));
+      this._sortProducts(this._btnSortName.getAttribute('data-sort'), this._btnSortName);
     });
 
     this._btnSortCalories.addEventListener('click', () => {
-      this._sortProducts(this._btnSortCalories.getAttribute('data-sort'));
+      this._sortProducts(this._btnSortCalories.getAttribute('data-sort'), this._btnSortCalories);
     });
   }
 }
