@@ -115,11 +115,28 @@
 
   <div class="container">
     <section class="products" id="products">
-      <h2 class="section-title">Список продуктов</h2>
+      <div class="products__row">
+        <h2 class="section-title">Список продуктов</h2>
+        <button class="button button_size_l button_type_add" data-type="product-add" aria-label="Добавить новый продукт">+</button>
+      </div>
+
       <div class="products__header">
         <span class="products__title">Название</span>
         <span class="products__title">Калории</span>
       </div>
+
+      <ul class="products__list">
+        <li class="product">
+          <span class="product__content">Огурец</span>
+          <span class="product__content">140</span>
+          <button class="button button_size_s button_type_del">+</button>
+        </li>
+        <li class="product">
+          <span class="product__content">Огурец</span>
+          <span class="product__content">140</span>
+          <button class="button button_size_s button_type_del">+</button>
+        </li>
+      </ul>
     </section>
 
     <section class="setting" id="setting">
@@ -219,6 +236,29 @@
         </button>
       </form>
     </section>
+  </div>
+
+  <div class="popup" id="popup-add-product">
+    <form class="popup__content">
+      <button
+        type="button"
+        class="popup__close"
+        aria-label="Закрыть окно добавления нового товара">
+        +
+      </button>
+
+      <div class="popup__wrapper">
+        <span class="popup__label">Название продукта</span>
+        <input class="input" type="text" min="2">
+      </div>
+
+      <div class="popup__wrapper">
+        <span class="popup__label">Калорийность</span>
+        <input class="input" type="number">
+      </div>
+
+      <button class="button">Добавить</button>
+    </form>
   </div>
 </body>
 </html>

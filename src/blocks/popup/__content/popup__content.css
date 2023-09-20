@@ -1,0 +1,10 @@
+.popup__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 24px;
+  width: 300px;
+  background-color: var(--color-system-green);
+  border-radius: 16px;
+}

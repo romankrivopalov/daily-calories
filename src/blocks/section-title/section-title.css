@@ -1,6 +1,13 @@
 .section-title {
   margin: 0;
   padding: 0;
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@media screen and (min-width: 1024px) {
+  .section-title {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }

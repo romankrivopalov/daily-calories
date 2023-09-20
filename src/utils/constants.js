@@ -48,3 +48,8 @@ export const settingPage = {
   nameAttributeDataActivity: 'data-activity',
   nameAttributeDataGender: 'data-gender',
 }
+
+export const popupSetting = {
+  pageSelector: '#popup-add-product',
+  pageShowClass: 'popup_show',
+}

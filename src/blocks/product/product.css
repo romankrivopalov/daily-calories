@@ -1,0 +1,12 @@
+.product {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 16px;
+  border-bottom: 1px solid var(--color-system-gray);
+}
+
+.product:last-child {
+  border-bottom: none;
+}
