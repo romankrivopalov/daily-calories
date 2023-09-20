@@ -74,18 +74,18 @@ class ProductPage extends Page {
     });
   }
 
-  openProductPage = () => {
+  // переопределение метода открытия страницы
+  openPage() {
     const productsData = JSON.parse(localStorage.getItem('products'));
 
     if (productsData) {
       this._productContainer.innerHTML = '';
       this._allProducts = [];
 
-      productsData.forEach(product => this.setProduct(product))
-      this.openPage();
-    } else {
-      this.openPage();
+      productsData.forEach(product => this.setProduct(product));
     }
+
+    super.openPage();
   }
 }
 

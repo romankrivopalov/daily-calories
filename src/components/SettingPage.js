@@ -112,12 +112,12 @@ class SettingPage extends Form {
   }
 
   // открытие страницы настроек
-  openSettingPage = () => {
+  openPage() {
     this._setEventListeners();
 
     this._setUserData(this._handleGetUserData());
 
-    this.openPage();
+    super.openPage();
   }
 }
 

@@ -53,8 +53,8 @@ const navbar = new Navbar(
   all.navbarSetting,
   closeAllPage,
   mainPage.openPage,
-  settingPage.openSettingPage,
-  productPage.openProductPage,
+  settingPage.openPage,
+  productPage.openPage,
 );
 
 mainPage.setEventListeners();
