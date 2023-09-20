@@ -70,7 +70,6 @@ export const popupNewProductSetting = {
   pageSelector: '#popup-add-product',
   pageShowClass: 'popup_show',
   popupFormSelector: '#add-product-form',
-  popupBtnCloseSelector: '.popup__close',
   popupInputSelector: '.input[data-type="add-product"]',
   popupBtnSubmitSelector: '#popup-btn-submit',
   nameAttributeDataProduct: 'data-product',
@@ -80,5 +79,4 @@ export const popupNewEatingSetting = {
   pageSelector: '#popup-add-eating',
   pageShowClass: 'popup_show',
   popupFormSelector: '#add-eating-form',
-  popupBtnCloseSelector: '.popup__close',
 }
