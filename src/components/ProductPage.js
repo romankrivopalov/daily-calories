@@ -55,6 +55,7 @@ class ProductPage extends Page {
     this._allProducts.push(data)
 
     this._productContainer.prepend(this._handleSetProduct(data));
+    localStorage.setItem('products', JSON.stringify(this._allProducts));
   }
 
   setEventListeners = () => {
@@ -71,6 +72,20 @@ class ProductPage extends Page {
     this._btnSortCalories.addEventListener('click', () => {
       this._sortProducts(this._btnSortCalories.getAttribute('data-sort'), this._btnSortCalories);
     });
+  }
+
+  openProductPage = () => {
+    const productsData = JSON.parse(localStorage.getItem('products'));
+
+    if (productsData) {
+      this._productContainer.innerHTML = '';
+      this._allProducts = [];
+
+      productsData.forEach(product => this.setProduct(product))
+      this.openPage();
+    } else {
+      this.openPage();
+    }
   }
 }
 
