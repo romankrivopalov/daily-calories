@@ -11,6 +11,11 @@ class Popup extends Page {
     this._handleSetProduct = handleSetProduct;
   }
 
+  // очистка полей формы
+  _resetForm = () => {
+    this._allInputs.forEach(input => input.value = '');
+  }
+
   _checkDataProduct = () => {
     // проверка наличия всех значений ключей объекта
     return Object.values(this._productData).every(item => item);
@@ -44,6 +49,8 @@ class Popup extends Page {
 
       this._handleSetProduct(this._productData);
       this.closePage();
+
+      this._resetForm();
     })
   }
 }

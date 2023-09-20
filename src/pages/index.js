@@ -24,7 +24,7 @@ const productPage = new ProductPage(
   },
   // функция создания инстанса product для добавляения его на страницу
   (productData) => {
-    const product = new Product(all.productSetting);
+    const product = new Product(all.productSetting, productPage.removeProduct);
 
     return product.generateProduct(productData);
   }

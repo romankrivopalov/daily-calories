@@ -1,10 +1,13 @@
 class Product {
-  constructor(setting) {
+  constructor(setting, handleRemoveProduct) {
     this._setting = setting;
+    this._handleRemoveProduct = handleRemoveProduct;
   }
 
   _setEventListeners = () => {
     this._btnDelete.addEventListener('click', () => {
+      this._handleRemoveProduct({ name: this._name.textContent, calories: this._calories.textContent })
+
       this._product.remove();
     })
   }

@@ -117,25 +117,20 @@
     <section class="products" id="products">
       <div class="products__row">
         <h2 class="section-title">Список продуктов</h2>
-        <button class="button button_size_l button_type_add" data-type="product-add" aria-label="Добавить новый продукт">+</button>
+        <button
+          class="button button_size_l button_type_add"
+          data-type="product-add"
+          aria-label="Добавить новый продукт">
+          +
+        </button>
       </div>
 
       <div class="products__header">
-        <span class="products__title">Название</span>
-        <span class="products__title">Калории</span>
+        <span class="products__title" data-type="sort-name" data-sort="name">Название</span>
+        <span class="products__title" data-type="sort-calories" data-sort="calories">Калории</span>
       </div>
 
       <ul class="products__list" id="product-list">
-        <li class="product">
-          <span class="product__content">Огурец</span>
-          <span class="product__content">140</span>
-          <button class="button button_size_s button_type_del">+</button>
-        </li>
-        <li class="product">
-          <span class="product__content">Огурец</span>
-          <span class="product__content">140</span>
-          <button class="button button_size_s button_type_del">+</button>
-        </li>
       </ul>
     </section>
 
