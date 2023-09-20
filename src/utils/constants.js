@@ -32,6 +32,16 @@ export const navbarSetting = {
 export const productPageSetting = {
   pageSelector: '#products',
   pageShowClass: 'products_show',
+  productContainer: '#product-list',
+  btnAddProductSelector: '.button[data-type="product-add"]',
+}
+
+export const productSetting = {
+  productTemplateSelector: '#product',
+  productSelector: '.product',
+  productNameSelector: '.product__content[data-type="name"]',
+  productcaloriesSelector: '.product__content[data-type="calories"]',
+  productBtnDeleteSelector: '.button_type_del',
 }
 
 export const settingPage = {
@@ -52,4 +62,9 @@ export const settingPage = {
 export const popupSetting = {
   pageSelector: '#popup-add-product',
   pageShowClass: 'popup_show',
+  popupFormSelector: '#add-product-form',
+  popupBtnCloseSelector: '.popup__close',
+  popupInputSelector: '.input[data-type="add-product"]',
+  popupBtnSubmitSelector: '#popup-btn-submit',
+  nameAttributeDataProduct: 'data-product',
 }

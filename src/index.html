@@ -125,7 +125,7 @@
         <span class="products__title">Калории</span>
       </div>
 
-      <ul class="products__list">
+      <ul class="products__list" id="product-list">
         <li class="product">
           <span class="product__content">Огурец</span>
           <span class="product__content">140</span>
@@ -239,7 +239,7 @@
   </div>
 
   <div class="popup" id="popup-add-product">
-    <form class="popup__content">
+    <form class="popup__content" id="add-product-form">
       <button
         type="button"
         class="popup__close"
@@ -249,16 +249,24 @@
 
       <div class="popup__wrapper">
         <span class="popup__label">Название продукта</span>
-        <input class="input" type="text" min="2">
+        <input class="input" type="text" min="2" data-type="add-product" data-product="name">
       </div>
 
       <div class="popup__wrapper">
         <span class="popup__label">Калорийность</span>
-        <input class="input" type="number">
+        <input class="input" type="number" data-type="add-product" data-product="calories">
       </div>
 
-      <button class="button">Добавить</button>
+      <button class="button" id="popup-btn-submit" disabled>Добавить</button>
     </form>
   </div>
+
+  <template id="product">
+    <li class="product">
+      <span class="product__content" data-type="name"></span>
+      <span class="product__content" data-type="calories"></span>
+      <button class="button button_size_s button_type_del">+</button>
+    </li>
+  </template>
 </body>
 </html>

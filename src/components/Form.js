@@ -3,7 +3,7 @@ import Page from './Page.js';
 class Form extends Page {
   constructor(setting) {
     super(setting);
-    this._form = this._page.querySelector(this.setting.formSelector);
+    this._form = this.page.querySelector(this.setting.formSelector);
     this._allGenderBtns = this._form.querySelectorAll(this.setting.btnGenderSelector);
     this._allActivityBtns = this._form.querySelectorAll(this.setting.btnActivitySelector);
     this._allInputs = this._form.querySelectorAll(this.setting.inputSelector);
