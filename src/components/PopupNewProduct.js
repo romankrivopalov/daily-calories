@@ -1,6 +1,6 @@
 import Page from './Page.js';
 
-class Popup extends Page {
+class PopupNewProduct extends Page {
   constructor(setting, handleSetProduct) {
     super(setting);
     this._form = this.page.querySelector(this.setting.popupFormSelector);
@@ -56,4 +56,4 @@ class Popup extends Page {
   }
 }
 
-export default Popup
+export default PopupNewProduct

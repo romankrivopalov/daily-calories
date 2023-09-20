@@ -1,9 +1,11 @@
 import Form from './Form.js';
 
 class StartPage extends Form {
-  constructor(setting, handleSetUserData) {
+  constructor(setting, handleSetUserData, handleOpenMainPage) {
     super(setting)
     this._handleSetUserData = handleSetUserData;
+    // открытие главной страницы
+    this._handleOpenMainPage = handleOpenMainPage;
     this._userData = this.setting.userData;
   }
 
@@ -83,6 +85,7 @@ class StartPage extends Form {
         this._handleSetUserData(this._userData);
 
         this.closePage();
+        this._handleOpenMainPage();
       }
     })
   }
@@ -94,6 +97,7 @@ class StartPage extends Form {
     if (userData) {
       this._userData = userData;
       this._handleSetUserData(this._userData);
+      this._handleOpenMainPage();
       this.closePage();
     } else {
       this.setEventListeners();

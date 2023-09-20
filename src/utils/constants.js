@@ -30,6 +30,12 @@ export const navbarSetting = {
   itemActiveClass: 'navbar__item_active',
 }
 
+export const mainPageSetting = {
+  pageSelector: '#main',
+  pageShowClass: 'main_show',
+  btnAddEatingSelector: '.button[data-type="eating-add"]',
+}
+
 export const productPageSetting = {
   pageSelector: '#products',
   pageShowClass: 'products_show',
@@ -60,7 +66,7 @@ export const settingPage = {
   nameAttributeDataGender: 'data-gender',
 }
 
-export const popupSetting = {
+export const popupNewProductSetting = {
   pageSelector: '#popup-add-product',
   pageShowClass: 'popup_show',
   popupFormSelector: '#add-product-form',
@@ -68,4 +74,11 @@ export const popupSetting = {
   popupInputSelector: '.input[data-type="add-product"]',
   popupBtnSubmitSelector: '#popup-btn-submit',
   nameAttributeDataProduct: 'data-product',
+}
+
+export const popupNewEatingSetting = {
+  pageSelector: '#popup-add-eating',
+  pageShowClass: 'popup_show',
+  popupFormSelector: '#add-eating-form',
+  popupBtnCloseSelector: '.popup__close',
 }

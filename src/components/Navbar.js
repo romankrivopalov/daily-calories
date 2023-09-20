@@ -1,10 +1,17 @@
 class Navbar {
-  constructor(setting, handleCloseAllpage, handleOpenSettingPage, handleOpenProductPage) {
+  constructor(
+    setting,
+    handleCloseAllpage,
+    handleOpenMainPage,
+    handleOpenSettingPage,
+    handleOpenProductPage
+  ) {
     this._setting = setting;
     this._btnMain = document.querySelector(this._setting.btnMainSelector);
     this._btnSetting = document.querySelector(this._setting.btnSettingSelector);
     this._btnProduct = document.querySelector(this._setting.btnProductsSelector);
     this._handleCloseAllpage = handleCloseAllpage;
+    this._handleOpenMainPage = handleOpenMainPage;
     this._handleOpenSettingPage = handleOpenSettingPage;
     this._handleOpenProductPage = handleOpenProductPage;
     this._allBtn = [this._btnMain, this._btnSetting, this._btnProduct]
@@ -18,6 +25,7 @@ class Navbar {
     this._btnMain.addEventListener('click', () => {
       this._handleCloseAllpage();
 
+      this._handleOpenMainPage();
       this._removeActiveClasses();
       this._btnMain.classList.add(this._setting.itemActiveClass);
     });

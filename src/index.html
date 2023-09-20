@@ -97,7 +97,7 @@
 
   <section class="navbar">
     <ul class="navbar__list">
-      <li class="navbar__item" data-type="main" aria-label="открыть главную страницу">
+      <li class="navbar__item navbar__item_active" data-type="main" aria-label="открыть главную страницу">
         <span class="navbar__item-text">Главная</span>
         <img class="navbar__icon" src="<%=require('./images/icon-navbar-main.svg')%>" alt="">
       </li>
@@ -114,6 +114,18 @@
   </section>
 
   <div class="container">
+    <section class="main" id="main">
+      <div class="main__row">
+        <h2 class="section-title">Добавить приём пищи</h2>
+        <button
+          class="button button_size_l button_type_add"
+          data-type="eating-add"
+          aria-label="Добавить приём пищи">
+          +
+        </button>
+      </div>
+    </section>
+
     <section class="products" id="products">
       <div class="products__row">
         <h2 class="section-title">Список продуктов</h2>
@@ -127,7 +139,7 @@
 
       <div class="products__header">
         <span class="products__title" data-type="sort-name" data-sort="name">Название</span>
-        <span class="products__title" data-type="sort-calories" data-sort="calories">Калории</span>
+        <span class="products__title" data-type="sort-calories" data-sort="calories">Калории (100г.)</span>
       </div>
 
       <ul class="products__list" id="product-list">
@@ -248,9 +260,22 @@
       </div>
 
       <div class="popup__wrapper">
-        <span class="popup__label">Калорийность</span>
+        <span class="popup__label">Калорийность (в 100г. продукта)</span>
         <input class="input" type="number" data-type="add-product" data-product="calories">
       </div>
+
+      <button class="button" id="popup-btn-submit" disabled>Добавить</button>
+    </form>
+  </div>
+
+  <div class="popup" id="popup-add-eating">
+    <form class="popup__content" id="add-eating-form">
+      <button
+        type="button"
+        class="popup__close"
+        aria-label="Закрыть окно добавления нового приёма пищи">
+        +
+      </button>
 
       <button class="button" id="popup-btn-submit" disabled>Добавить</button>
     </form>
