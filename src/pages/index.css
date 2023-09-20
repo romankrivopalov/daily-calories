@@ -31,6 +31,7 @@
 @import url('../blocks/navbar/navbar.css');
 @import url('../blocks/navbar/__list/navbar__list.css');
 @import url('../blocks/navbar/__item/navbar__item.css');
+@import url('../blocks/navbar/__item/_active/navbar__item_active.css');
 @import url('../blocks/navbar/__item-text/navbar__item-text.css');
 @import url('../blocks/navbar/__icon/navbar__icon.css');
 @import url('../blocks/navbar/__link/navbar__link.css');
