@@ -1,0 +1,22 @@
+.pie {
+  /* width: 100%; */
+}
+
+.pie__chart {
+  display: block;
+  margin: 0 auto;
+}
+
+.pie__circle {
+  animation: circle-chart-fill 2s reverse;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.circle-chart__circle--negative {
+  transform: rotate(-90deg) scale(1,-1);
+}
+
+@keyframes circle-chart-fill {
+  to { stroke-dasharray: 0 100; }
+}

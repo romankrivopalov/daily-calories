@@ -41,12 +41,18 @@
 
 @import url('../blocks/main/main.css');
 @import url('../blocks/main/_show/main_show.css');
+@import url('../blocks/main/__wrapper/main__wrapper.css');
+@import url('../blocks/main/__column/main__column.css');
+@import url('../blocks/main/__title/main__title.css');
+@import url('../blocks/main/__subtitle/main__subtitle.css');
 @import url('../blocks/main/__row/main__row.css');
 @import url('../blocks/main/__list/main__list.css');
 @import url('../blocks/main/__eating/main__eating.css');
 @import url('../blocks/main/__eating-title/main__eating-title.css');
 @import url('../blocks/main/__eating-wrapper/main__eating-wrapper.css');
 @import url('../blocks/main/__eating-item/main__eating-item.css');
+
+@import url('../blocks/pie/pie.css');
 
 @import url('../blocks/products/products.css');
 @import url('../blocks/products/_show/products_show.css');

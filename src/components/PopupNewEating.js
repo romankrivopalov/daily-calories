@@ -150,7 +150,9 @@ class PopupNewEating extends Page {
       })
 
       // вызов метода и передача массива
-      this._handleSetNewEating(res.filter(product => product))
+      this._handleSetNewEating(res.filter(product => product));
+
+      this.closePage();
     })
   }
 }
