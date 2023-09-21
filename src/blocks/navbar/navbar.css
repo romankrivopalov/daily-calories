@@ -13,8 +13,9 @@
   background-color: var(--color-system-green);
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1120px) {
   .navbar {
+    margin: 0 auto;
     width: 164px;
   }
 }

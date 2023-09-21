@@ -13,6 +13,7 @@ class PopupNewEating extends Page {
     this._allInputs = [];
   }
 
+  // очистка данных продукта
   _clearProductsData = () => {
     this._productContainer.innerHTML = '';
     this._allProductsElements = [];
@@ -25,9 +26,7 @@ class PopupNewEating extends Page {
     let count = 0;
 
     for (let i = 0; i < this._allInputs.length; i++) {
-      if (this._allInputs[i].value.length) {
-        count++
-      }
+      if (this._allInputs[i].value.length) count++
     }
 
     return count;
@@ -38,9 +37,7 @@ class PopupNewEating extends Page {
     let count = 0;
 
     for (let i = 0; i < this._allCheckboxs.length; i++) {
-      if (this._allCheckboxs[i].checked) {
-        count++;
-      }
+      if (this._allCheckboxs[i].checked) count++
     }
 
     return count;
@@ -84,7 +81,7 @@ class PopupNewEating extends Page {
         productInputCalories.disabled = false;
 
         // отключение кнопки submit
-        if (this._checkCheckboxs() === this._checkInputs()) this._btnSubmit.disabled = true;
+        this._btnSubmit.disabled = true;
       } else {
         productCheckbox.checked = false;
         productInputCalories.disabled = true;
@@ -101,8 +98,6 @@ class PopupNewEating extends Page {
 
     // установка обработчика на ввод значения в input
     productInputCalories.addEventListener('input', () => {
-      console.log(this._checkCheckboxs(), this._checkInputs())
-
       if (this._checkCheckboxs() === this._checkInputs()) {
         this._btnSubmit.disabled = false;
       } else {
@@ -113,10 +108,12 @@ class PopupNewEating extends Page {
     return product;
   }
 
+  // установка объекта в контейнер
   _setProduct = (data, index) => {
     this._productContainer.prepend(this._generateProduct(data, index));
   }
 
+  // переопределение метода
   openPage() {
     this._clearProductsData();
 
@@ -140,15 +137,20 @@ class PopupNewEating extends Page {
     this._form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const arr = this._allInputs.reverse().map(input => !!input.value);
-
-      this._handleSetNewEating(this._allProductsElements.map((item, i) => {
+      // выбрать все элементы с заполненными инпутами
+      // тк если чекбокс не активен, инпут будет выключен
+      const arr = this._allInputs.map(input => !!input.value);
+      // собрать объект по индексу заполненного инпута
+      const res = this._allProductsElements.map((item, i) => {
         if (arr[i]) return {
           name: item.getAttribute('data-name'),
           calories: item.getAttribute('data-calories'),
-          quantity: this._allInputs[i].value
+          weight: this._allInputs[i].value
         }
-      }))
+      })
+
+      // вызов метода и передача массива
+      this._handleSetNewEating(res.filter(product => product))
     })
   }
 }

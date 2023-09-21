@@ -124,6 +124,9 @@
           +
         </button>
       </div>
+
+      <ul class="main__list">
+      </ul>
     </section>
 
     <section class="products" id="products">
@@ -291,5 +294,22 @@
       <button class="button button_size_s button_type_del">+</button>
     </li>
   </template>
+
+  <template id="eating-item">
+    <li class="main__eating">
+      <div class="main__row">
+        <h3 class="main__eating-title">1й приём пищи</h3>
+        <button
+          class="button button_type_del"
+          data-type="eating-remove"
+          aria-label="Удалить приём пищи">
+          +
+        </button>
+      </div>
+      <ul class="main__eating-wrapper">
+      </ul>
+    </li>
+  </template>
+
 </body>
 </html>

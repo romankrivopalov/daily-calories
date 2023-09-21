@@ -13,7 +13,7 @@
   opacity: .7;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1120px) {
   .navbar__item {
     justify-content: flex-end;
     padding: 8px 24px;

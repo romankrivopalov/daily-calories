@@ -8,6 +8,7 @@ import StartPage from '../components/StartPage.js';
 import User from '../components/User.js';
 import Navbar from '../components/Navbar.js';
 import MainPage from '../components/MainPage.js';
+import Eating from '../components/Eating.js';
 import ProductPage from '../components/ProductPage.js';
 import Product from '../components/Product.js';
 import SettingPage from '../components/SettingPage.js';
@@ -42,6 +43,11 @@ const mainPage = new MainPage(
     popupNewEating.setEventListeners();
 
     return popupNewEating.openPage
+  },
+  (data) => {
+    const eating = new Eating(all.eatingSetting);
+
+    return eating.generateEating(data);
   }
 );
 const startPage = new StartPage(all.startPageSetting, user.setUserData, mainPage.openPage);

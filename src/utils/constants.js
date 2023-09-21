@@ -36,6 +36,12 @@ export const mainPageSetting = {
   btnAddEatingSelector: '.button[data-type="eating-add"]',
 }
 
+export const eatingSetting = {
+  templateSelector: '#eating-item',
+  eatingItemSelector: '.main__eating',
+  btnEatingRemoveSelector: '.button[data-type="eating-remove"]',
+}
+
 export const productPageSetting = {
   pageSelector: '#products',
   pageShowClass: 'products_show',
