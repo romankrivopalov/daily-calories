@@ -1,0 +1,7 @@
+.eating__checkbox {
+  display: block;
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  display: none;
+}

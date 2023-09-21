@@ -1,6 +1,7 @@
 :root {
   --transition-hover: opacity .1s ease-in-out;
   --color-system-white: #FFF;
+  --color-system-gray-easy: #b3b3b3;
   --color-system-gray: #797979;
   --color-system-black: #000;
   --color-system-green: #618F4F;

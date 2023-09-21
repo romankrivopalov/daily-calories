@@ -18,6 +18,7 @@
 @import url('../blocks/input/input.css');
 @import url('../blocks/input/_type/input_type_short.css');
 @import url('../blocks/input/_type/input_type_dark.css');
+@import url('../blocks/input/_type/input_type_eating.css');
 
 @import url('../blocks/start/start.css');
 @import url('../blocks/start/_show/start_show.css');
@@ -66,3 +67,9 @@
 @import url('../blocks/popup/__content/popup__content.css');
 @import url('../blocks/popup/__close/popup__close.css');
 @import url('../blocks/popup/__label/popup__label.css');
+
+@import url('../blocks/eating/eating.css');
+@import url('../blocks/eating/__item/eating__item.css');
+@import url('../blocks/eating/__text/eating__text.css');
+@import url('../blocks/eating/__checkbox/eating__checkbox.css');
+@import url('../blocks/eating/__decor/eating__decor.css');

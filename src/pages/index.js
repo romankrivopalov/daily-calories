@@ -14,17 +14,6 @@ import SettingPage from '../components/SettingPage.js';
 
 
 const user = new User();
-const mainPage = new MainPage(
-  all.mainPageSetting,
-  // функция создающая инстанс popup, назначающая обработчик и возвращающая метод открытия
-  () => {
-    const popupNewEating = new PopupNewEating(all.popupNewEatingSetting);
-    popupNewEating.setEventListeners();
-
-    return popupNewEating.openPage
-  }
-);
-const startPage = new StartPage(all.startPageSetting, user.setUserData, mainPage.openPage);
 const productPage = new ProductPage(
   all.productPageSetting,
   // функция создающая инстанс popup, назначающая обработчик и возвращающая метод открытия
@@ -41,6 +30,17 @@ const productPage = new ProductPage(
     return product.generateProduct(productData);
   }
 );
+const mainPage = new MainPage(
+  all.mainPageSetting,
+  // функция создающая инстанс popup, назначающая обработчик и возвращающая метод открытия
+  () => {
+    const popupNewEating = new PopupNewEating(all.popupNewEatingSetting, productPage.getAllProducts);
+    popupNewEating.setEventListeners();
+
+    return popupNewEating.openPage
+  }
+);
+const startPage = new StartPage(all.startPageSetting, user.setUserData, mainPage.openPage);
 const settingPage = new SettingPage(all.settingPage, user.getUserData, user.setUserData);
 
 const allPage = [mainPage, productPage, settingPage]
