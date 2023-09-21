@@ -14,17 +14,19 @@ class PopupNewEating extends Page {
 
   // тк в проекте уже есть метод создания элементов
   // через template, решил использовать createElement
-  _generateProduct = ({ name, calories}) => {
+  _generateProduct = ({ name, calories}, index) => {
     const product = document.createElement('li');
     product.className = 'eating__item';
+    product.setAttribute('calories', `${index}-${calories}`);
 
     const productCheckbox = document.createElement('input');
     productCheckbox.className = 'eating__checkbox';
     productCheckbox.type = 'checkbox';
-    productCheckbox.id = `${name}-${calories}`;
+    productCheckbox.id = `${index}-${calories}`;
 
     const productCheckboxDecor = document.createElement('label');
     productCheckboxDecor.className = 'eating__decor';
+    productCheckboxDecor.setAttribute('for', `${index}-${calories}`);
 
     const productText = document.createElement('p');
     productText.className = 'eating__text';
@@ -39,8 +41,8 @@ class PopupNewEating extends Page {
     return product;
   }
 
-  _setProduct = (data) => {
-    this._productContainer.prepend(this._generateProduct(data));
+  _setProduct = (data, index) => {
+    this._productContainer.prepend(this._generateProduct(data, index));
   }
 
   openPage() {
@@ -49,7 +51,7 @@ class PopupNewEating extends Page {
     const allProducts = this._handleGetAllProducts();
 
     if (allProducts.length) {
-      allProducts.forEach(product => this._setProduct(product))
+      allProducts.forEach((product, i) => this._setProduct(product, i))
     }
 
     super.openPage();
