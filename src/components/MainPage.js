@@ -9,8 +9,20 @@ class MainPage extends Page {
     this._handleNewEating = handleNewEating;
   }
 
+  _clearContainer = () => {
+    this._eatingContainer.innerHTML = '';
+  }
+
   setNewEating = (data) => {
-    this._eatingContainer.prepend(this._handleNewEating(data));
+    const eating = this._handleNewEating(data);
+    this._eatingContainer.prepend(eating);
+
+    const date = new Date();
+
+    localStorage.setItem('eating', JSON.stringify({
+      date: `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`,
+      data: data,
+    }))
   }
 
   setEventListeners = () => {
@@ -19,6 +31,27 @@ class MainPage extends Page {
     this._btnAddProduct.addEventListener('click', () => {
       this._openPopup();
     })
+  }
+
+  openPage() {
+    super.openPage();
+
+    const data = JSON.parse(localStorage.getItem('eating'));
+
+    if (data) {
+      const date = new Date();
+
+      // если дата не совпадает с текущей, очистка контейнера и локального хранилища
+      if (`${date.getDay()}.${date.getMonth()}.${date.getFullYear()}` === data.date) {
+        this._clearContainer();
+
+        const eating = this._handleNewEating(data.data);
+        this._eatingContainer.prepend(eating);
+      } else {
+        this._clearContainer();
+        localStorage.removeItem('eating');
+      }
+    }
   }
 }
 
