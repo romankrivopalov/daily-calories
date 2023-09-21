@@ -34,7 +34,11 @@ const mainPage = new MainPage(
   all.mainPageSetting,
   // функция создающая инстанс popup, назначающая обработчик и возвращающая метод открытия
   () => {
-    const popupNewEating = new PopupNewEating(all.popupNewEatingSetting, productPage.getAllProducts);
+    const popupNewEating = new PopupNewEating(
+      all.popupNewEatingSetting,
+      productPage.getAllProducts,
+      mainPage.setNewEating,
+    );
     popupNewEating.setEventListeners();
 
     return popupNewEating.openPage

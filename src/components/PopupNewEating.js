@@ -1,41 +1,58 @@
 import Page from './Page.js';
 
 class PopupNewEating extends Page {
-  constructor(setting, handleGetAllProducts) {
+  constructor(setting, handleGetAllProducts, handleSetNewEating) {
     super(setting);
     this._form = this.page.querySelector(this.setting.popupFormSelector);
     this._btnSubmit = this.page.querySelector('#popup-btn-submit');
     this._productContainer = this.page.querySelector('#eating');
     this._handleGetAllProducts = handleGetAllProducts;
+    this._handleSetNewEating = handleSetNewEating;
     this._allProductsElements = [];
     this._allCheckboxs = [];
+    this._allInputs = [];
   }
 
   _clearProductsData = () => {
     this._productContainer.innerHTML = '';
     this._allProductsElements = [];
     this._allCheckboxs = [];
+    this._allInputs = [];
   }
 
-  _checkValidityItems = () => {
-    let isChecked = false;
+  // проверка на количество заполненных инпутов
+  _checkInputs = () => {
+    let count = 0;
+
+    for (let i = 0; i < this._allInputs.length; i++) {
+      if (this._allInputs[i].value.length) {
+        count++
+      }
+    }
+
+    return count;
+  }
+
+  // проверка на количество включенных чекбоксов
+  _checkCheckboxs = () => {
+    let count = 0;
 
     for (let i = 0; i < this._allCheckboxs.length; i++) {
       if (this._allCheckboxs[i].checked) {
-        isChecked = true;
-        i = this._allCheckboxs.length
-      };
+        count++;
+      }
     }
 
-    return isChecked;
+    return count;
   }
 
   // тк в проекте уже есть метод создания элементов
   // через template, решил использовать createElement
-  _generateProduct = ({ name, calories}, index) => {
+  _generateProduct = ({ name, calories}) => {
     const product = document.createElement('li');
     product.className = 'eating__item';
-    product.setAttribute('calories', `${index}-${calories}`);
+    product.setAttribute('data-name', `${name}`);
+    product.setAttribute('data-calories', `${calories}`);
 
     const productCheckbox = document.createElement('input');
     productCheckbox.className = 'eating__checkbox';
@@ -53,32 +70,45 @@ class PopupNewEating extends Page {
     productInputCalories.type = 'number';
     productInputCalories.disabled = true;
 
-    this._allCheckboxs.push(productCheckbox);
     this._allProductsElements.push(product);
+    this._allCheckboxs.push(productCheckbox);
+    this._allInputs.push(productInputCalories);
 
     product.prepend(productCheckbox, productCheckboxDecor, productText, productInputCalories);
 
-    // установка обработчика
+    // установка обработчика на нажатие чекбокса
     productCheckboxDecor.addEventListener('click', () => {
       // если чекбокс не нажат, меняем его значение, включаем инпут и кнопку submit
       if (!productCheckbox.checked) {
         productCheckbox.checked = true;
         productInputCalories.disabled = false;
 
-        this._btnSubmit.disabled = false;
+        // отключение кнопки submit
+        if (this._checkCheckboxs() === this._checkInputs()) this._btnSubmit.disabled = true;
       } else {
         productCheckbox.checked = false;
         productInputCalories.disabled = true;
         productInputCalories.value = '';
 
         // проверка есть ли ещё включенные продукты
-        if (this._checkValidityItems()) {
+        if (this._checkCheckboxs() === this._checkInputs()) {
           this._btnSubmit.disabled = false;
         } else {
           this._btnSubmit.disabled = true;
         }
       }
     });
+
+    // установка обработчика на ввод значения в input
+    productInputCalories.addEventListener('input', () => {
+      console.log(this._checkCheckboxs(), this._checkInputs())
+
+      if (this._checkCheckboxs() === this._checkInputs()) {
+        this._btnSubmit.disabled = false;
+      } else {
+        this._btnSubmit.disabled = true;
+      }
+    })
 
     return product;
   }
@@ -100,11 +130,25 @@ class PopupNewEating extends Page {
   }
 
   setEventListeners = () => {
-    this.page.addEventListener('mousedown', (evt) => {
+    this.page.addEventListener('mousedown', (e) => {
       // если нажатый элемент содержит класс открытого popup или кнопки закрытия, выполнить закрытие popup
-      if (evt.target.classList.contains('popup_show') || evt.target.classList.contains('popup__close')) {
+      if (e.target.classList.contains('popup_show') || e.target.classList.contains('popup__close')) {
         this.closePage();
       }
+    });
+
+    this._form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const arr = this._allInputs.reverse().map(input => !!input.value);
+
+      this._handleSetNewEating(this._allProductsElements.map((item, i) => {
+        if (arr[i]) return {
+          name: item.getAttribute('data-name'),
+          calories: item.getAttribute('data-calories'),
+          quantity: this._allInputs[i].value
+        }
+      }))
     })
   }
 }

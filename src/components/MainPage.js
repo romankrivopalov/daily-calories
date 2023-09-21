@@ -7,6 +7,10 @@ class MainPage extends Page {
     this._handleNewPopup = handleNewPopup;
   }
 
+  setNewEating = (data) => {
+    console.log(data)
+  }
+
   setEventListeners = () => {
     this._openPopup = this._handleNewPopup();
 
