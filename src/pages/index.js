@@ -48,7 +48,8 @@ const mainPage = new MainPage(
     const eating = new Eating(all.eatingSetting, mainPage.removeDataInLocalStorage, count);
 
     return eating.generateEating(data);
-  }
+  },
+  user.getUserData,
 );
 const startPage = new StartPage(all.startPageSetting, user.setUserData, mainPage.openPage);
 const settingPage = new SettingPage(all.settingPage, user.getUserData, user.setUserData);

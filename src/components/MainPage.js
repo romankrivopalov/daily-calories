@@ -1,14 +1,30 @@
 import Page from './Page.js';
 
 class MainPage extends Page {
-  constructor(setting, handleNewPopup, handleNewEating) {
+  constructor(setting, handleNewPopup, handleNewEating, handleGetUserData) {
     super(setting);
     this._btnAddProduct = this.page.querySelector(this.setting.btnAddEatingSelector);
     this._eatingContainer = this.page.querySelector('.main__list');
+    this._goalsCalorie = this.page.querySelector('.main__title[data-type="calories-goals"]');
     this._handleNewPopup = handleNewPopup;
     this._handleNewEating = handleNewEating;
+    this._handleGetUserData = handleGetUserData;
     // счетчик элементов для отслеживания удаляемого элемента из localStorage;
     this.countEating = 0;
+  }
+
+  _calculateGoalsCalories = () => {
+    const { gender, age, height, weight, activity } = this._handleGetUserData();
+    let DCI;
+    let ratio = activity === 'low' ? 1.2 : activity === 'middle' ? 1.5 : 1.9;
+
+    if (gender === 'male') {
+      DCI = (((weight * 10) + (height * 6.25) - (age * 5)) + 5) * ratio
+    } else {
+      DCI = (((weight * 10) + (height * 6.25) - (age * 5)) - 161) * ratio
+    }
+
+    return DCI
   }
 
   _clearContainer = () => {
@@ -84,6 +100,8 @@ class MainPage extends Page {
         localStorage.removeItem('eating');
       }
     }
+
+    this._goalsCalorie.textContent = `${Math.round(this._calculateGoalsCalories())} ккал`;
   }
 }
 
