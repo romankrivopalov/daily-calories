@@ -45,7 +45,12 @@ const mainPage = new MainPage(
     return popupNewEating.openPage
   },
   (data, count) => {
-    const eating = new Eating(all.eatingSetting, mainPage.removeDataInLocalStorage, count);
+    const eating = new Eating(
+      all.eatingSetting,
+      mainPage.removeDataInLocalStorage,
+      count,
+      mainPage.setTotalCountCalories
+    );
 
     return eating.generateEating(data);
   },

@@ -1,14 +1,23 @@
 class Eating {
-  constructor(setting, handleRemoveDataInLocalStorage, count) {
+  constructor(
+    setting,
+    handleRemoveDataInLocalStorage,
+    count,
+    handleSetTotalCountCalories
+  ) {
     this._setting = setting;
     this._totalCalories = 0;
     this._handleRemoveDataInLocalStorage = handleRemoveDataInLocalStorage;
+    this._handleSetTotalCountCalories = handleSetTotalCountCalories;
     this._count = count;
   }
 
   _setEventListeners = () => {
     this._btnRemoveEating.addEventListener('click', () => {
       this._eating.remove();
+
+      // передать весь объём калорий для вычета в статичстике на главной странице
+      this._handleSetTotalCountCalories(-this._totalCalories);
 
       this._handleRemoveDataInLocalStorage(this._count);
     })
@@ -19,6 +28,7 @@ class Eating {
     // калории продукта указываются с расчётом на 100 грамм
     const calories = Math.round(weight / 100 * initial);
     this._totalCalories += calories;
+    this._handleSetTotalCountCalories(this._totalCalories);
 
     return calories;
   }

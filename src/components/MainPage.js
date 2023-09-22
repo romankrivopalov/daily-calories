@@ -5,12 +5,36 @@ class MainPage extends Page {
     super(setting);
     this._btnAddProduct = this.page.querySelector(this.setting.btnAddEatingSelector);
     this._eatingContainer = this.page.querySelector('.main__list');
-    this._goalsCalorie = this.page.querySelector('.main__title[data-type="calories-goals"]');
+    this._goalsCalorieElement = this.page.querySelector('.main__title[data-type="calories-goals"]');
+    this._pieRound = this.page.querySelector('.pie__circle');
+    this._pieTitleCalories = this.page.querySelector('.pie__title');
+    this._pieSubtitle = this.page.querySelector('.pie__subtitle');
+    this._dailyCalorieElement = this.page.querySelector('.main__title[data-type="calories-daily"]');
     this._handleNewPopup = handleNewPopup;
     this._handleNewEating = handleNewEating;
     this._handleGetUserData = handleGetUserData;
+    this._totalCalories = 0;
     // счетчик элементов для отслеживания удаляемого элемента из localStorage;
     this.countEating = 0;
+  }
+
+  _setTotalCountInPage = () => {
+    const percent = Math.round((this._totalCalories * 100) / this._goalsCalories);
+
+    this._pieTitleCalories.textContent = `${percent}%`;
+    this._pieRound.setAttribute('stroke-dasharray', `${percent},100`);
+
+    if (this._totalCalories) this._dailyCalorieElement.textContent = `${this._totalCalories} ккал`;
+
+    if (percent >= 100) {
+      this._pieRound.setAttribute('stroke', 'red');
+      this._pieSubtitle.textContent = 'Превышен лимит';
+      this._dailyCalorieElement.style.color = 'red';
+    } else {
+      this._pieRound.setAttribute('stroke', '#618F4F');
+      this._pieSubtitle.textContent = 'Отличный результат';
+      this._dailyCalorieElement.style.color = '';
+    }
   }
 
   _calculateGoalsCalories = () => {
@@ -23,6 +47,8 @@ class MainPage extends Page {
     } else {
       DCI = (((weight * 10) + (height * 6.25) - (age * 5)) - 161) * ratio
     }
+
+    this._goalsCalories = DCI;
 
     return DCI
   }
@@ -62,7 +88,9 @@ class MainPage extends Page {
     localStorage.setItem('eating', JSON.stringify({
       date: `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`,
       data: dataInLS ? [...dataInLS.data, newData] : [newData]
-    }))
+    }));
+
+    this._setTotalCountInPage();
   }
 
   setEventListeners = () => {
@@ -71,6 +99,13 @@ class MainPage extends Page {
     this._btnAddProduct.addEventListener('click', () => {
       this._openPopup();
     })
+  }
+
+  // изменение общего счетчика калорий
+  setTotalCountCalories = (value) => {
+    this._totalCalories += +value;
+
+    this._setTotalCountInPage();
   }
 
   openPage() {
@@ -101,7 +136,8 @@ class MainPage extends Page {
       }
     }
 
-    this._goalsCalorie.textContent = `${Math.round(this._calculateGoalsCalories())} ккал`;
+    this._goalsCalorieElement.textContent = `${Math.round(this._calculateGoalsCalories())} ккал`;
+    this._setTotalCountInPage();
   }
 }
 
