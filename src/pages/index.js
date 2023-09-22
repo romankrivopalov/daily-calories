@@ -44,8 +44,8 @@ const mainPage = new MainPage(
 
     return popupNewEating.openPage
   },
-  (data) => {
-    const eating = new Eating(all.eatingSetting);
+  (data, count) => {
+    const eating = new Eating(all.eatingSetting, mainPage.removeDataInLocalStorage, count);
 
     return eating.generateEating(data);
   }

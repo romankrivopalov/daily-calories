@@ -7,21 +7,45 @@ class MainPage extends Page {
     this._eatingContainer = this.page.querySelector('.main__list');
     this._handleNewPopup = handleNewPopup;
     this._handleNewEating = handleNewEating;
+    // счетчик элементов для отслеживания удаляемого элемента из localStorage;
+    this.countEating = 0;
   }
 
   _clearContainer = () => {
     this._eatingContainer.innerHTML = '';
   }
 
+  // удаление элемента из объекта в localStorage
+  removeDataInLocalStorage = (count) => {
+    // получение объекта
+    const data = JSON.parse(localStorage.getItem('eating'));
+
+    // фильтрация массива по счетчику элементов с помощью оператора нулевого слияния
+    const newData = data.data.filter(item => item.count !== count ?? item);
+
+    // установк новых данных, без удаляемого элемента
+    localStorage.setItem('eating', JSON.stringify({date: data.date, data: newData}));
+  }
+
   setNewEating = (data) => {
-    const eating = this._handleNewEating(data);
+    // увеличение счетчика
+    this.countEating++;
+
+    // создание нового элемента
+    const eating = this._handleNewEating(data, this.countEating);
+    // установка нового элемента на страницу
     this._eatingContainer.prepend(eating);
 
+    // сборка объекта для установки данных в localStorage
+    const newData = {count: this.countEating, products: data};
     const date = new Date();
+
+    // получение значения для проверки наличия данных
+    const dataInLS = JSON.parse(localStorage.getItem('eating'));
 
     localStorage.setItem('eating', JSON.stringify({
       date: `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`,
-      data: data,
+      data: dataInLS ? [...dataInLS.data, newData] : [newData]
     }))
   }
 
@@ -45,9 +69,17 @@ class MainPage extends Page {
       if (`${date.getDay()}.${date.getMonth()}.${date.getFullYear()}` === data.date) {
         this._clearContainer();
 
-        const eating = this._handleNewEating(data.data);
-        this._eatingContainer.prepend(eating);
+        const eating = data.data.map(item => {
+          // проверка величины count элментов, самое большое значение записываем в переменную счетчика
+          if (item.count > this.countEating) this.countEating = item.count;
+
+          // возвращвем в массив, созданные элементы. Счётчик для отслеживания удаляемого элемента
+          return this._handleNewEating(item.products, this.countEating);
+        });
+
+        eating.forEach(eating => this._eatingContainer.prepend(eating));
       } else {
+        this.countEating = 0;
         this._clearContainer();
         localStorage.removeItem('eating');
       }

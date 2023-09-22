@@ -1,12 +1,16 @@
 class Eating {
-  constructor(setting) {
+  constructor(setting, handleRemoveDataInLocalStorage, count) {
     this._setting = setting;
     this._totalCalories = 0;
+    this._handleRemoveDataInLocalStorage = handleRemoveDataInLocalStorage;
+    this._count = count;
   }
 
   _setEventListeners = () => {
     this._btnRemoveEating.addEventListener('click', () => {
       this._eating.remove();
+
+      this._handleRemoveDataInLocalStorage(this._count);
     })
   }
 
@@ -46,12 +50,13 @@ class Eating {
 
   // генерация продукта
   generateEating = (data) => {
+    this._data = data;
     this._eating = this._getTemplate();
     this._btnRemoveEating = this._eating.querySelector(this._setting.btnEatingRemoveSelector);
     this._eatingTitle = this._eating.querySelector('.main__eating-title');
     this._eatingList = this._eating.querySelector('.main__eating-wrapper');
 
-    data.forEach(item => this._setItem(this._eatingList, this._createItem(item)));
+    this._data.forEach(item => this._setItem(this._eatingList, this._createItem(item)));
     this._eatingTitle.textContent = `Приём пищи, ${this._totalCalories} ккал`
 
     this._setEventListeners();
