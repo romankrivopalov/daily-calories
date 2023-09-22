@@ -90,9 +90,9 @@ class PopupNewEating extends Page {
 
         // проверка есть ли ещё включенные продукты
         if (this._checkCheckboxs() === this._checkInputs()) {
-          this._btnSubmit.disabled = false;
-        } else {
           this._btnSubmit.disabled = true;
+        } else {
+          this._btnSubmit.disabled = false;
         }
       }
     });
