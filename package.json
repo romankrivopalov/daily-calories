@@ -1,7 +1,7 @@
 {
-  "name": "pick-a-number",
+  "name": "daily-calories",
   "version": "1.0.0",
-  "description": "web game pick-a-number",
+  "description": "web app daily-calories",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/romankrivopalov/pick-a-number.git"
+    "url": "git+https://github.com/romankrivopalov/daily-calories.git"
   },
   "author": "Roman Krivopalov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/romankrivopalov/pick-a-number/issues"
+    "url": "https://github.com/romankrivopalov/daily-calories/issues"
   },
-  "homepage": "https://github.com/romankrivopalov/pick-a-number#readme",
+  "homepage": "https://github.com/romankrivopalov/daily-calories#readme",
   "devDependencies": {
     "@babel/core": "^7.22.19",
     "@babel/preset-env": "^7.22.15",
