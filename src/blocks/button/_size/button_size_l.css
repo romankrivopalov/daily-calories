@@ -1,0 +1,11 @@
+.button_size_l {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+@media screen and (min-width: 1024px) {
+  .button_size_l {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}

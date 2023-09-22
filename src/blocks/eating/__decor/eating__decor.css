@@ -1,0 +1,18 @@
+.eating__decor {
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background-color: var(--color-system-white);
+  transform: translateY(-50%);
+  border-radius: 4px;
+}
+
+.eating__checkbox:checked ~ .eating__decor {
+  background-color: var(--color-system-yellow);
+  background-image: url('../../../images/icon-checkbox.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

@@ -1,0 +1,12 @@
+.popup__close {
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  font-size: 40px;
+  line-height: 40px;
+  color: var(--color-system-white);
+  background-color: transparent;
+  border: none;
+  transform: rotate(45deg);
+  cursor: pointer;
+}

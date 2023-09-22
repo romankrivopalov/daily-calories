@@ -1,0 +1,26 @@
+.eating {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 40px;
+  max-height: 320px;
+  list-style: none;
+  background-color: var(--color-system-green-easy);
+  border-radius: 8px;
+  overflow-y: scroll;
+}
+
+.eating::-webkit-scrollbar {
+  width: 6px;
+}
+
+.eating::-webkit-scrollbar-thumb {
+  height: 30px;
+  background-color: var(--color-system-white);
+  border-radius: 3px;
+}
+
+.eating::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-system-gray-easy);
+}

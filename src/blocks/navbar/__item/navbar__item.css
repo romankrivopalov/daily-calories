@@ -1,0 +1,21 @@
+.navbar__item {
+  margin: 0;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  opacity: 1;
+  cursor: pointer;
+  transition: var(--transition-hover);
+}
+
+.navbar__item:hover {
+  opacity: .7;
+}
+
+@media screen and (min-width: 1120px) {
+  .navbar__item {
+    justify-content: flex-end;
+    padding: 8px 24px;
+  }
+}

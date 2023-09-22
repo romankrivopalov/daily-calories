@@ -1,0 +1,14 @@
+.navbar__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0 0 16px;
+  list-style: none;
+}
+
+@media screen and (min-width: 1120px) {
+  .navbar__list {
+    padding: 0 0 24px;
+  }
+}

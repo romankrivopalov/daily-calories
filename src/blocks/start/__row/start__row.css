@@ -1,0 +1,11 @@
+.start__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media screen and (min-width: 1024px) {
+  .start__row {
+    gap: 16px;
+  }
+}

@@ -1,3 +1,10 @@
 .page {
-
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--color-system-black);
+  font-family: 'Raleway', Helvetica, sans-serif;
+  background-color: var(--color-system-white);
 }

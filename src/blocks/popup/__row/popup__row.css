@@ -1,0 +1,4 @@
+.popup__row {
+  display: flex;
+  gap: 16px;
+}

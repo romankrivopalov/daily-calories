@@ -1,0 +1,21 @@
+.navbar {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 48px;
+  height: 100vh;
+  background-color: var(--color-system-green);
+}
+
+@media screen and (min-width: 1120px) {
+  .navbar {
+    margin: 0 auto;
+    width: 164px;
+  }
+}

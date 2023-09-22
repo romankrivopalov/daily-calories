@@ -1,0 +1,13 @@
+.eating__item {
+  position: relative;
+  margin: 8px;
+  padding: 8px 0 8px 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 2px solid var(--color-system-green);
+}
+
+.eating__item:last-child {
+  border-bottom: none;
+}

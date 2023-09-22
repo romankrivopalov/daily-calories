@@ -1,0 +1,78 @@
+class Eating {
+  constructor(
+    setting,
+    handleRemoveDataInLocalStorage,
+    count,
+    handleSetTotalCountCalories
+  ) {
+    this._setting = setting;
+    this._totalCalories = 0;
+    this._handleRemoveDataInLocalStorage = handleRemoveDataInLocalStorage;
+    this._handleSetTotalCountCalories = handleSetTotalCountCalories;
+    this._count = count;
+  }
+
+  _setEventListeners = () => {
+    this._btnRemoveEating.addEventListener('click', () => {
+      this._eating.remove();
+
+      // передать весь объём калорий для вычета в статичстике на главной странице
+      this._handleSetTotalCountCalories(-this._totalCalories);
+
+      this._handleRemoveDataInLocalStorage(this._count);
+    })
+  }
+
+  // подсчёт калорийности
+  _calculateCalories = (weight, initial) => {
+    // калории продукта указываются с расчётом на 100 грамм
+    const calories = Math.round(weight / 100 * initial);
+    this._totalCalories += calories;
+    this._handleSetTotalCountCalories(this._totalCalories);
+
+    return calories;
+  }
+
+  // создание продукта для приёма пищи
+  _createItem = (data) => {
+    const item = document.createElement('li');
+    item.className = 'main__eating-item'
+    item.textContent = `${data.name}, ${data.weight} грамм, ${this._calculateCalories(data.weight, data.calories)} ккал`;
+
+    return item;
+  }
+
+  // установка продука в приём пищи
+  _setItem = (container, item) => {
+    container.prepend(item);
+  }
+
+  // генерация шаблона
+  _getTemplate = () => {
+    const eatingElement = document
+      .querySelector(this._setting.templateSelector)
+      .content
+      .querySelector(this._setting.eatingItemSelector)
+      .cloneNode(true);
+
+    return eatingElement;
+  }
+
+  // генерация продукта
+  generateEating = (data) => {
+    this._data = data;
+    this._eating = this._getTemplate();
+    this._btnRemoveEating = this._eating.querySelector(this._setting.btnEatingRemoveSelector);
+    this._eatingTitle = this._eating.querySelector('.main__eating-title');
+    this._eatingList = this._eating.querySelector('.main__eating-wrapper');
+
+    this._data.forEach(item => this._setItem(this._eatingList, this._createItem(item)));
+    this._eatingTitle.textContent = `Приём пищи, ${this._totalCalories} ккал`
+
+    this._setEventListeners();
+
+    return this._eating;
+  }
+}
+
+export default Eating

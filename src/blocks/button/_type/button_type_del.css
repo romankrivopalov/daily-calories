@@ -1,0 +1,16 @@
+.button_type_del {
+  margin: 0;
+  padding: 0;
+  font-size: 40px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-system-brown);
+  background-color: inherit;
+  transform: rotate(45deg);
+  opacity: 1;
+}
+
+.button_type_del:hover {
+  background-color: inherit;
+  opacity: .7;
+}

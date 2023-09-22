@@ -1,0 +1,15 @@
+.main__title {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  line-height: 30px;
+  color: var(--color-system-yellow-dark);
+  text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .main__title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
