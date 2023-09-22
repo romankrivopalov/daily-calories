@@ -65,6 +65,7 @@ class PopupNewEating extends Page {
     const productInputCalories = document.createElement('input');
     productInputCalories.className = 'input input_type_eating';
     productInputCalories.type = 'number';
+    productInputCalories.placeholder =  "вес в гр.";
     productInputCalories.disabled = true;
 
     this._allProductsElements.push(product);
